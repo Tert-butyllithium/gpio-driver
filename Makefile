@@ -7,6 +7,8 @@ CFLAGS = -nostdlib -static -mcmodel=medany -g
 link_script = drv_gpio.lds
 
 src := sunxi_gpio.c
+src += main.c
+src += fast_sprintf.c
 
 objs := $(src:%.c=%.o)
 

@@ -13,6 +13,7 @@
 // #include <asm/arch/cpu.h>
 
 
+// GPIO_BASE
 #define SUNXI_PIO_BASE			0x02000000
 #define SUNXI_CCM_BASE			0x02001000
 #define SUNXI_DMA_BASE			0x03002000
@@ -90,9 +91,12 @@ struct sunxi_gpio_reg {
 	struct sunxi_gpio_int gpio_int;
 };
 
+extern u64 SUNXI_PIO_BASE_MAPPED;
+extern u64 SUNXI_R_PIO_BASE_MAPPED;
+
 #define BANK_TO_GPIO(bank)	(((bank) < SUNXI_GPIO_L) ? \
-	&((struct sunxi_gpio_reg *)SUNXI_PIO_BASE)->gpio_bank[bank] : \
-	&((struct sunxi_gpio_reg *)SUNXI_R_PIO_BASE)->gpio_bank[(bank) - SUNXI_GPIO_L])
+	&((struct sunxi_gpio_reg *)SUNXI_PIO_BASE_MAPPED)->gpio_bank[bank] : \
+	&((struct sunxi_gpio_reg *)SUNXI_R_PIO_BASE_MAPPED)->gpio_bank[(bank) - SUNXI_GPIO_L])
 
 #define GPIO_BANK(pin)		((pin) >> 5)
 #define GPIO_NUM(pin)		((pin) & 0x1f)

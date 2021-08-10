@@ -8,7 +8,8 @@
 #ifndef _SUNXI_GPIO_H
 #define _SUNXI_GPIO_H
 
-#include <linux/types.h>
+// #include <linux/types.h>
+#include "types.h"
 // #include <asm/arch/cpu.h>
 
 /*
